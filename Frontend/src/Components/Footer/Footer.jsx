@@ -5,13 +5,14 @@ function Footer() {
   return (
     <>
       <section className="flex bg-transparent sm:m-8 ">
-        <div className=" max-w-screen mx-auto flex flex-col items-center gap-4 shadow-md p-4 justify-center rounded-sm">
+
+        <div className=" max-w-screen mx-auto flex flex-col items-center gap-4 shadow-md p-4 justify-center sm:flex-row  rounded-sm">
           <img src={img_1} alt="Google Quiz" className="w-14 h-14" />
         <a 
         href="https://phishingquiz.withgoogle.com/" 
         target="_blank"
         rel="noopener noreferrer"
-        className="button py-2 px-2 sm:py-3 sm:px-6 "
+        className="button py-2 px-4 sm:py-3 sm:px-6 "
         title="Phishing Quiz by Google"
         >
           Take a Phishing Quiz by Google
@@ -34,3 +35,5 @@ function Footer() {
 }
 
 export default Footer;
+
+

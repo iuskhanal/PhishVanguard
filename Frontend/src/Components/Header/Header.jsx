@@ -64,7 +64,7 @@ const Header = () => {
             </span>
 
             {/* Main Dropdown Menu */}
-            <div className=" absolute left-0 top-full -ml-8 mt-2 w-48 bg-white  text-russian-Violet shadow-lg rounded-md group-hover:block group-hover:opacity-80 transition-opacity duration-100 ">
+            <div className=" absolute left-0 top-full -ml-8 mt-2 w-48 bg-white  text-russian-Violet shadow-lg rounded-md opacity-0 z-20 group-hover:block group-hover:opacity-80 transition-opacity duration-100 ">
               {/* Phshihg case report sub menu */}
               <div className=" relative text-sm group/sub ">
                 <div className=" px-4 py-4 hover:text-auzure cursor-pointer ">
@@ -75,7 +75,7 @@ const Header = () => {
                 </div>
 
                 {/* {Nested Submenu} */}
-                <div className=" absolute left-full top-2 mt-2 -ml-1 w-48 z-30 bg-white text-russian-Violet shadow-lg rounded-md opacity-0 group-hover/sub:opacity-100 group-hover/sub:block transition-opacity duration-100">
+                <div className="absolute left-full top-2 mt-2 -ml-1 w-48 z-30 bg-white text-russian-Violet shadow-lg rounded-md opacity-0 group-hover/sub:opacity-100 group-hover/sub:block transition-opacity duration-100">
                   <a
                     href="https://safebrowsing.google.com/safebrowsing/report_phish/?hl=en"
                     className=" block px-4 py-2 text-sm hover:text-auzure"
@@ -99,7 +99,7 @@ const Header = () => {
                   </span>
                 </div>
 
-                <div className=" absolute left-full top-2 mt-2-ml-1 w-48 bg-white text-russian-Violet shadow-lg rounded-md opacity-0 group-hover:block group-hover:opacity-100 transition-opacity duration-100">
+                <div className="absolute left-full top-2 mt-2 -ml-1 w-48 z-30 bg-white text-russian-Violet shadow-lg rounded-md opacity-0 group-hover/sub:opacity-100 group-hover/sub:block transition-opacity duration-100">
                   <a 
                   href="https://www.phishingbox.com/phishing-test"
                   className="block px-4 py-2 hover:text-auzure"

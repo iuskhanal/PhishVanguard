@@ -1,5 +1,12 @@
-import { ArrowBigRight, CircleHelp,CircleChevronRight } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import {
+  ChevronDown,
+  ChevronUp,
+  CircleHelp,
+  ArrowBigRight,
+  ArrowRight,
+  CircleChevronRight,
+} from "lucide-react";
 
 const questions = [
   {
@@ -427,38 +434,76 @@ const questions = [
   },
 ];
 
-export const toggleQuestions = ({question, answer, isOpen, onClick}) => {
-    const contentRef = useRef(null)
 
-    const [contentHeight, setContentHeight] = useState(0)
+const ToggleQuestion = ({ question, answer, isOpen, onClick }) => {
+  const contentRef = useRef(null);
 
-    useEffect(()=> {
-        if( contentRef.current && isOpen) {
-            setContentHeight(contentRef.current.scrollHeight);
-        } 
-        else{
-            setContentHeight(0)
-        }
-    }, [isOpen]);
+  // Dynamically set max-height based on content
+  const [contentHeight, setContentHeight] = useState(0);
 
-    return (
+  useEffect(() => {
+    if (contentRef.current && isOpen) {
+      setContentHeight(contentRef.current.scrollHeight);
+    } else {
+      setContentHeight(0);
+    }
+  }, [isOpen]);
+
+  return (
+    <div
+      onClick={onClick}
+      className="cursor-pointer FAQ bg-transparent rounded-lg shadow-md p-6 mb-4 transition-all duration-300 ease-in-out"
+    >
+      <div className="flex justify-between items-center">
         <div>
-            <div>
-                <div>
-                    <h3>
-                        <CircleHelp />
-                    </h3>
-                </div>
-            </div>
+          <h3 className="flex flex-row hover:text-cornflower-blue justify-start sm:text-xl">
+            <CircleHelp className="mr-2 flex-shrink-0" />
+            <b className="text-xl">{question}</b>
+          </h3>
         </div>
-    )
-} 
+        {isOpen ? (
+          <ChevronUp className="text-cornflower-blue" />
+        ) : (
+          <ChevronDown className="text-cornflower-blue" />
+        )}
+      </div>
 
-function PhishingQuestion() {
-  return 
-  (
-    <toggleQuestions />
-  )
-}
+      <div
+        ref={contentRef}
+        className="overflow-hidden transition-max-height duration-500 ease-in-out"
+        style={{ maxHeight: `${contentHeight}px` }}
+      >
+        <p className="FAQA text-lg text-justify whitespace-pre-line mt-4">
+          {answer}
+        </p>
+      </div>
+    </div>
+  );
+};
 
-export default PhishingQuestion;
+const PhishingFAQ = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const handleToggle = (index) => {
+    setActiveIndex(index === activeIndex ? null : index);
+  };
+
+  return (
+    <section className="max-w-5xl mx-auto px-4 sm:px-8 py-16">
+      <h2 className="text-3xl w-contain bg-transparent rounded-lg shadow-md font-secondary text-center text-russian-Violet mb-10">
+        <strong>Learn About Phishing</strong>
+      </h2>
+      {questions.map((item, index) => (
+        <ToggleQuestion
+          key={index}
+          question={item.question}
+          answer={item.answer}
+          isOpen={activeIndex === index}
+          onClick={() => handleToggle(index)}
+        />
+      ))}
+    </section>
+  );
+};
+
+export default PhishingFAQ;

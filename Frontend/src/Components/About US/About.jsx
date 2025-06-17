@@ -53,7 +53,7 @@ const About = () => {
           <Minus size={200} className=" w-100 h-10  text-auzure-mb-6" />
         </div>
 
-        <p className=" text-xl text-gray-700 font-primary text-justify mt-4">
+        <p className="text-sm sm:text-base md:text-lg text-gray-600  mb-6 font-primary text-justify">
           The author of this research are
           <strong> Ayush Khanal</strong>, 
           <strong> Arabi Basnet</strong>, 

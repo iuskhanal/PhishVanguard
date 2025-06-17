@@ -3,6 +3,8 @@ import axios from "axios";
 import img_1 from "../../assets/hero-first.svg";
 import img_2 from "../../assets/hero-second.svg";
 import PhishingQuestion from "./PhishingQuestion";
+import Up from "./Scroller";
+
 
 const Home = () => {
   const [url, setUrl] = useState("");
@@ -113,6 +115,27 @@ const Home = () => {
         </div>
           
           <PhishingQuestion />
+           <section className="w-full max-w-[1200px] m-15 mx-auto">
+        <div className="flex flex-col  md:flex-row justify-between p-3  gap-15">
+          <iframe
+            src="https://www.youtube.com/embed/lc7scxvKQOo"
+            title="This is how hackers hack you using simple social engineering"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="w-full md:w-1/2 aspect-video rounded-sm"
+          ></iframe>
+          <iframe
+            src="https://www.youtube.com/embed/PWVN3Rq4gzw"
+            title="Watch this hacker break into a company"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="w-full md:w-1/2 aspect-video rounded-sm"
+          ></iframe>
+        </div>
+      </section>
+          <Up />
       </section>
     </div>
   );

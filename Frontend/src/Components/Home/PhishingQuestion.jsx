@@ -427,7 +427,7 @@ const questions = [
   },
 ];
 
-const toggleQuestions = ({question, answer, isOpen, onClick}) => {
+export const toggleQuestions = ({question, answer, isOpen, onClick}) => {
     const contentRef = useRef(null)
 
     const [contentHeight, setContentHeight] = useState(0)
@@ -457,9 +457,7 @@ const toggleQuestions = ({question, answer, isOpen, onClick}) => {
 function PhishingQuestion() {
   return 
   (
-    <div>
-        <h1>PhishFAQ </h1>
-    </div>
+    <toggleQuestions />
   )
 }
 

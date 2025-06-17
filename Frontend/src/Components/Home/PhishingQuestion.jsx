@@ -1,4 +1,4 @@
-import { CircleHelp } from "lucide-react";
+import { ArrowBigRight, CircleHelp,CircleChevronRight } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 
 const questions = [
@@ -46,15 +46,15 @@ const questions = [
         <p>Successful Phishing attacks can:</p>
         <ul className="list-none mt-2 space-y-2">
           <li className="flex items-start space-x-2">
-            <ArrowRight className="text-azure mt-1 w-5 h-5" />
+            <ArrowBigRight className="text-azure mt-1 w-5 h-5" />
             <span>Cause financial loss for victims</span>
           </li>
           <li className="flex items-start space-x-2">
-            <ArrowRight className="text-azure mt-1 w-5 h-5" />
+            <ArrowBigRight className="text-azure mt-1 w-5 h-5" />
             <span>Put their personal information at risk</span>
           </li>
           <li className="flex items-start space-x-2">
-            <ArrowRight className="text-azure mr-2" />
+            <ArrowBigRight  className="text-azure mr-2" />
             <span>Put data and systems at risk</span>
           </li>
         </ul>

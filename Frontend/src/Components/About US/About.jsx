@@ -1,8 +1,10 @@
 import React from 'react'
-
-function About() {
+import logo from '../../assets/logo.svg'
+const  About = () =>  {
   return (
-    <div>About</div>
+    <section>
+      <img src={logo} alt="PhishGuard Logo" />
+    </section>
   )
 }
 

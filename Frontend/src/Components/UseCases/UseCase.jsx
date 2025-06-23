@@ -11,8 +11,7 @@ import img_3 from "../../assets/pic3_credential.png";
 import img_4 from "../../assets/pic4_purelog-stealer.png";
 import img_5 from "../../assets/pic5_vip_keylogger.png";
 import img_6 from "../../assets/pic6_credenial_fiance_theme.png";
-import Up from './../Home/Scroller';
-
+import Up from "./../Home/Scroller";
 
 const images = [
   {
@@ -340,8 +339,6 @@ const useCases = [
 
 const ToggleQuestion = ({ useCase, example, isOpen, onClick }) => {
   const contentRef = useRef(null);
-
-  // Dynamically set max-height based on content
   const [contentHeight, setContentHeight] = useState(0);
 
   useEffect(() => {
@@ -376,9 +373,9 @@ const ToggleQuestion = ({ useCase, example, isOpen, onClick }) => {
         className="overflow-hidden transition-max-height duration-500 ease-in-out"
         style={{ maxHeight: `${contentHeight}px` }}
       >
-        <p className="FAQA text-lg text-justify text-Ghost-white whitespace-pre-line mt-4">
+        <div className="FAQA text-lg text-justify text-Ghost-white whitespace-pre-line mt-4">
           {example}
-        </p>
+        </div>
       </div>
     </div>
   );
@@ -421,11 +418,9 @@ const UseCase = () => {
         ))}
         <Up />
       </section>
-       
 
       <section className="py-12 bg-transparent" title="testimonial">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          {/* Scrollable Card Container */}
           <div className="overflow-x-auto">
             <div
               className="flex space-x-6 snap-x snap-mandatory scroll-smooth pb-2"
@@ -437,7 +432,6 @@ const UseCase = () => {
                   onClick={() => handleImageClick(item.src)}
                   className="snap-start flex-shrink-0 sm:w-[80%] w-[100%] md:w-[calc(50%-0.75rem)] bg-Ghost-white rounded-xl shadow-md hover:shadow-xl cursor-pointer transition-shadow duration-300"
                 >
-                  {/* Image Area */}
                   <div className="w-full h-[440px] overflow-hidden rounded-t-xl">
                     <img
                       src={item.src}
@@ -445,32 +439,16 @@ const UseCase = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-
-                  {/* Description Area */}
                   <div className="p-4">
-                    <p className="text-justify italic text-russian-Violet">
+                    <div className="text-justify italic text-russian-Violet">
                       {item.desc}
-                    </p>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
         </div>
-
-        {/* Modal Image View */}
-        {selectedImage && (
-          <div
-            className="fixed inset-0 bg-Ghost-white bg-opacity-70 flex justify-center items-center z-50"
-            onClick={closeModal}
-          >
-            <img
-              src={selectedImage}
-              alt="Full preview"
-              className="max-w-[90%] max-h-[80%] rounded-lg shadow-2xl border-4 border-white"
-            />
-          </div>
-        )}
       </section>
     </div>
   );

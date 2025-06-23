@@ -101,7 +101,7 @@ const Home = () => {
          </div>
         </div>
 
-        <div className="w-full flex flex-col md:flex-row  justify-center   mt-8 px-4">
+        <div className="w-full flex flex-col md:flex-row  justify-center  mt-8 px-4 sm:flex-col sm:justify-between">
           <img 
           src={img_1}
            alt="Phising" 

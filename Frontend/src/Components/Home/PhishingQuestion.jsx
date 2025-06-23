@@ -61,7 +61,7 @@ const questions = [
             <span>Put their personal information at risk</span>
           </li>
           <li className="flex items-start space-x-2">
-            <ArrowBigRight  className="text-azure mr-2" />
+            <ArrowBigRight className="text-azure mr-2" />
             <span>Put data and systems at risk</span>
           </li>
         </ul>
@@ -434,11 +434,8 @@ const questions = [
   },
 ];
 
-
 const ToggleQuestion = ({ question, answer, isOpen, onClick }) => {
   const contentRef = useRef(null);
-
-  // Dynamically set max-height based on content
   const [contentHeight, setContentHeight] = useState(0);
 
   useEffect(() => {
@@ -467,15 +464,14 @@ const ToggleQuestion = ({ question, answer, isOpen, onClick }) => {
           <ChevronDown className="text-cornflower-blue" />
         )}
       </div>
-
       <div
         ref={contentRef}
         className="overflow-hidden transition-max-height duration-500 ease-in-out"
         style={{ maxHeight: `${contentHeight}px` }}
       >
-        <p className="FAQA text-lg text-justify whitespace-pre-line mt-4">
-          {answer}
-        </p>
+        <div className="FAQA text-lg text-justify whitespace-pre-line mt-4">
+          {typeof answer === "string" ? <p>{answer}</p> : answer}
+        </div>
       </div>
     </div>
   );

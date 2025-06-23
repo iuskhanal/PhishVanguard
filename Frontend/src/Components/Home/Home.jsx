@@ -5,7 +5,6 @@ import img_2 from "../../assets/hero-second.svg";
 import PhishingQuestion from "./PhishingQuestion";
 import Up from "./Scroller";
 
-
 const Home = () => {
   const [url, setUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -70,72 +69,81 @@ const Home = () => {
             className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto mb-4 sm:mb-6 flex items-center justify-center "
           >
             <input
-            value={url}
+              value={url}
               onChange={(e) => setUrl(e.target.value)}
               className="w-full p-2 sm:p-3 rounded-sm rounded-br-none rounded-tr-none text-dark-purple border-2 focus:outline-none focus:border-cornflower-blue transition duration-300 mb-2 sm:mb-4"
               required
-             />
-             <button
+            />
+            <button
               type="submit"
-               className="w-[50%] bg-indigo-700 p-2 sm:p-3 rounded-br-2xl text-dark-purple border-2 focus:outline-none focus:border-cornflower-blue transition duration-300 mb-2 sm:mb-4 cursor-pointer hover:bg-purple-600 hover:text-white font-semibold disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
+              className="w-[50%] bg-indigo-700 p-2 sm:p-3 rounded-br-2xl text-dark-purple border-2 focus:outline-none focus:border-cornflower-blue transition duration-300 mb-2 sm:mb-4 cursor-pointer hover:bg-purple-600 hover:text-white font-semibold disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
               disabled={isLoading}
-             >
-              { isLoading ? "checking..." : "Check URL"}
-             </button>
+            >
+              {isLoading ? "checking..." : "Check URL"}
+            </button>
           </form>
           {error && (
-            <p className="text-red-500 text-sm sm:text-base mb-2 sm:mb-4">{error}</p>
+            <p className="text-red-500 text-sm sm:text-base mb-2 sm:mb-4">
+              {error}
+            </p>
           )}
-         <div className="flex flex-col items-center w-full max-w-md">
-           {result && (
-            <div className="bg-white shadow-md rounded-lg p-4 w-full max-w-md">
-              <h2 className="text-xl font-bold text-dark-purple mb-2">Result</h2>
-              <p className="text-gray-700">
-                The URL <strong>{result.url}</strong> is{" "}
-                <span className={result.is_phishing ? "text-red-500" : "text-green-500"}>
-                  {result.is_phishing ? "malicious" : "safe"}
-                </span>.
-              </p>
-            </div>
-          )}
-         </div>
+          <div className="flex flex-col items-center w-full max-w-md">
+            {result && (
+              <div className="bg-white shadow-md rounded-lg p-4 w-full max-w-md">
+                <h2 className="text-xl font-bold text-dark-purple mb-2">
+                  Result
+                </h2>
+                <p className="text-gray-700">
+                  The URL <strong>{result.url}</strong> is{" "}
+                  <span
+                    className={
+                      result.is_phishing ? "text-red-500" : "text-green-500"
+                    }
+                  >
+                    {result.is_phishing ? "malicious" : "safe"}
+                  </span>
+                  .
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+        
+         <div className="w-full flex flex-col md:flex-row  justify-center   mt-8 px-4">
+          <img
+            src={img_2}
+            alt="Phishing"
+            className="w-full  max-w-[900px] max-h-[400px] h-auto object-cover rounded-md"
+          />
+          <img
+            src={img_1}
+            alt="Phishing"
+            className="w-full  max-w-[800px] max-h-[400px] h-auto object-fit rounded-md"
+          />
         </div>
 
-        <div className="w-full flex flex-col md:flex-row  justify-center  mt-8 px-4 sm:flex-col sm:justify-between">
-          <img 
-          src={img_1}
-           alt="Phising" 
-           className="w-[50%] h-auto mb-4 sm:mb-6 rounded-lg shadow-md"
-          />
-          <img 
-          src={img_2}
-           alt="Phisng" 
-           className="w-[50%] h-auto mb-4 sm:mb-6 rounded-lg shadow-md"
-          />
-        </div>
-          
-          <PhishingQuestion />
-           <section className="w-full max-w-[1200px] m-15 mx-auto">
-        <div className="flex flex-col  md:flex-row justify-between p-3  gap-15">
-          <iframe
-            src="https://www.youtube.com/embed/lc7scxvKQOo"
-            title="This is how hackers hack you using simple social engineering"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-            className="w-full md:w-1/2 aspect-video rounded-sm"
-          ></iframe>
-          <iframe
-            src="https://www.youtube.com/embed/PWVN3Rq4gzw"
-            title="Watch this hacker break into a company"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-            className="w-full md:w-1/2 aspect-video rounded-sm"
-          ></iframe>
-        </div>
-      </section>
-          <Up />
+        <PhishingQuestion />
+        <section className="w-full max-w-[1200px] m-15 mx-auto">
+          <div className="flex flex-col  md:flex-row justify-between p-3  gap-15">
+            <iframe
+              src="https://www.youtube.com/embed/lc7scxvKQOo"
+              title="This is how hackers hack you using simple social engineering"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="w-full md:w-1/2 aspect-video rounded-sm"
+            ></iframe>
+            <iframe
+              src="https://www.youtube.com/embed/PWVN3Rq4gzw"
+              title="Watch this hacker break into a company"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="w-full md:w-1/2 aspect-video rounded-sm"
+            ></iframe>
+          </div>
+        </section>
+        <Up />
       </section>
     </div>
   );

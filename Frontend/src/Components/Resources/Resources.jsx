@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
 
-function Resources() {
+const Resources = () => {
   return (
-    <div>Resources</div>
-  )
-}
+    <div>
+      <h1>Resources</h1>
+      <p>This is the Resources page.</p>
+    </div>
+  );
+};
 
-export default Resources
+export default Resources;

@@ -54,61 +54,56 @@ const Header = () => {
             Usecase
           </NavLink>
 
-          <div className="relative group">
-            <span className=" flex text-center w-20 items-center justify-between rounded-md hover-navbar cursor-pointer">
+          <div className="relative group z-40">
+            <span className="flex items-center justify-between w-24 cursor-pointer rounded-md hover-navbar">
               Resources
-              <span>
-                {""}
-                <ChevronDown size={16} />
-              </span>
+              <ChevronDown size={16} />
             </span>
 
-            {/* Main Dropdown Menu */}
-            <div className=" absolute left-0 top-full -ml-8 mt-2 w-48 bg-white  text-russian-Violet shadow-lg rounded-md opacity-0 z-20 group-hover:block group-hover:opacity-80 transition-opacity duration-100 ">
-              {/* Phshihg case report sub menu */}
-              <div className=" relative text-sm group/sub ">
-                <div className=" px-4 py-4 hover:text-auzure cursor-pointer ">
-                  <span className="flex items-center justify-between">
-                    <span>Report Phishing Cases</span>
-                    <ChevronRight size={10} />
-                  </span>
+            {/* Main Dropdown */}
+            <div className="absolute left-0 top-full mt-2 w-60 bg-white text-russian-Violet shadow-lg rounded-md z-40 opacity-0 group-hover:opacity-100 group-hover:block transition-opacity duration-150">
+              {/* Report Phishing Cases Submenu */}
+              <div className="relative group/report">
+                <div className="px-4 py-3 hover:text-auzure cursor-pointer flex justify-between items-center">
+                  Report Phishing Cases
+                  <ChevronRight size={12} />
                 </div>
 
-                {/* {Nested Submenu} */}
-                <div className="absolute left-full top-2 mt-2 -ml-1 w-48 z-30 bg-white text-russian-Violet shadow-lg rounded-md opacity-0 group-hover/sub:opacity-100 group-hover/sub:block transition-opacity duration-100">
+                {/* Nested Submenu */}
+                <div className="absolute top-0 left-full mt-0 ml-1 w-64 bg-white text-russian-Violet shadow-lg rounded-md z-50 opacity-0 group-hover/report:opacity-100 group-hover/report:block transition-opacity duration-150 whitespace-nowrap">
                   <a
                     href="https://safebrowsing.google.com/safebrowsing/report_phish/?hl=en"
-                    className=" block px-4 py-2 text-sm hover:text-auzure"
+                    className="block px-4 py-2 text-sm hover:text-auzure"
                   >
                     Google Safe Browsing
                   </a>
                   <a
-                   href="https://support.google.com/websearch/answer/106318"
-                   className=" block px-4 py-2 text-sm hover:text-cyan-300"
-                   >
+                    href="https://support.google.com/websearch/answer/106318"
+                    className="block px-4 py-2 text-sm hover:text-auzure"
+                  >
                     Google Support
-                    </a>
+                  </a>
                 </div>
               </div>
 
-              <div>
-                <div className=" px-4 py-4 hover:text-auzure cursor-pointer">
-                  <span className=" flex items-center justify-between" >
-                    <span>Test Phishing Websites </span>
-                    <ChevronRight size={10} />
-                  </span>
+              {/* Test Phishing Websites Submenu */}
+              <div className="relative group/test">
+                <div className="px-4 py-3 hover:text-auzure cursor-pointer flex justify-between items-center">
+                  Test Phishing Websites
+                  <ChevronRight size={12} />
                 </div>
 
-                <div className="absolute left-full top-2 mt-2 -ml-1 w-48 z-30 bg-white text-russian-Violet shadow-lg rounded-md opacity-0 group-hover/sub:opacity-100 group-hover/sub:block transition-opacity duration-100">
-                  <a 
-                  href="https://www.phishingbox.com/phishing-test"
-                  className="block px-4 py-2 hover:text-auzure"
-                  > 
-                  Phishing Box
+                {/* Nested Submenu */}
+                <div className="absolute top-0 left-full mt-0 ml-1 w-64 bg-white text-russian-Violet shadow-lg rounded-md z-50 opacity-0 group-hover/test:opacity-100 group-hover/test:block transition-opacity duration-150 whitespace-nowrap">
+                  <a
+                    href="https://www.phishingbox.com/phishing-test"
+                    className="block px-4 py-2 text-sm hover:text-auzure"
+                  >
+                    Phishing Box
                   </a>
-                   <a
+                  <a
                     href="https://www.intradyn.com/phishing-quiz/"
-                    className="block px-4 py-2 hover:text-auzure "
+                    className="block px-4 py-2 text-sm hover:text-auzure"
                   >
                     Intradyn
                   </a>
@@ -118,21 +113,21 @@ const Header = () => {
           </div>
 
           <a
-           href="http://localhost:5000/download"
-           className="rounded-md hover-navbar"
-           >
+            href="http://localhost:5000/download"
+            className="rounded-md hover-navbar"
+          >
             <span className=" flex hover:text-auzure w-25 justify-between ">
               <span>Download</span>
               <span>
                 {""}
-              <ChevronDown size={16} />
+                <ChevronDown size={16} />
               </span>
             </span>
-           </a>
+          </a>
         </div>
       </div>
 
-       {isOpen && (
+      {isOpen && (
         <div
           className={`fixed top-14 right-0 w-54 sm:w-80 bg-russian-Violet text-mint-green z-20 p-4 space-y-4 text-sm transform transition-transform duration-300 ease-in-out ${
             isOpen ? "translate-x-0" : "-translate-x-full"
@@ -149,7 +144,7 @@ const Header = () => {
             About Us
           </Link>
           <Link
-            to="/usecases"
+            to="/usecase"
             onClick={() => setIsOpen(false)}
             className="block"
           >
@@ -233,13 +228,13 @@ const Header = () => {
             )}
           </div>
           <a
-            href="http://localhost:5000/download" // replace with your actual domain in production
+            href="http://localhost:5000/download" 
             className="block"
           >
             <span className="flex  items-center justify-between">
               Download
               <span>
-                <Download size={14}  />
+                <Download size={14} />
               </span>
             </span>
           </a>

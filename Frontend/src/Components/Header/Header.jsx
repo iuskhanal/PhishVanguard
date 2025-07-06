@@ -228,7 +228,7 @@ const Header = () => {
             )}
           </div>
           <a
-            href="http://localhost:5000/download" 
+            href="https://phishing-detector-api-production.up.railway.app/download" 
             className="block"
           >
             <span className="flex  items-center justify-between">

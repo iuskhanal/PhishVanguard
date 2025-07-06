@@ -100,6 +100,7 @@ const Home = () => {
               Protect Yourself with {""}
               <span className="text-russian-Violet text-3xl font-primary-2 font-bold">
                 PhishVanguard
+                  {/* Name of the project */}
               </span>
             </h1>
           </div>

@@ -28,7 +28,7 @@ const Home = () => {
 
   useEffect(()=>{
     try{
-      localStorage.setItem("phishingResults", JSON.stringify(results));
+      localStorage.setItem("phishingResults", JSON.stringify(result));
     } catch (err) {
       console.error("Failed to save results to localStorage: ", err);
     }

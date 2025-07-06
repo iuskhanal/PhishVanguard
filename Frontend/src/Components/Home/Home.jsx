@@ -136,7 +136,7 @@ const Home = () => {
             {result.map((result, index) => (
               <div className="bg-white shadow-md rounded-lg p-4 w-full max-w-md">
                 <ResultCard
-                  key={ResultCard}
+                  key={ResultCard + index}
                   url={result.url}
                   is_phishing={result.is_phishing}
                   safe_score={result.safe_score}

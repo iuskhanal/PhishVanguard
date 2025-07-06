@@ -1,15 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import img_1 from "../../assets/hero-first.svg";
 import img_2 from "../../assets/hero-second.svg";
 import PhishingQuestion from "./PhishingQuestion";
 import Up from "./Scroller";
+import ResultCard from "./ResultCard";
 
 const Home = () => {
   const [url, setUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [result, setResult] = useState(null);
+  const [result, setResults] = useState([]);
   const [error, setError] = useState(null);
+
+  // Trying to load result form localstorage.
+
+  useEffect(()=> {
+    try {
+      const savedResults = JSON.parse(localStorage.getItem("phishingResults")) || [];
+      // filtering out invalid entries...
+      setResults(savedResults.filter((result)=> result && result.url && typeof result.is_phishing === "boolean"));
+    } catch (err) {
+      console.error("Faild to load results from localStorage : ",err)
+    }
+  },[])
+
+  // Save results to localStorage on update 
+
+  useEffect(()=>{
+    try{
+      localStorage.setItem("phishingResults", JSON.stringify(results));
+    } catch (err) {
+      console.error("Failed to save results to localStorage: ", err);
+    }
+  }, [result])
 
   const handleCheckUrl = async (e) => {
     e.preventDefault();
@@ -21,28 +44,41 @@ const Home = () => {
     setError(null);
 
     try {
+      const API_URL = import.meta.env.VITE_API_URL || "https://phishing-detector-api-production.up.railway.app/predict" ;
       const response = await axios.post(
-        "http://localhost:5000/predict",
+        API_URL,
         { url },
         {
           headers: { "Content-Type": "application/json" },
           timeout: 10000,
         }
       );
-      setResults([response.data, ...results]);
-      setUrl("");
+
+      // validate response 
+      if(
+        !response.data || 
+        !response.data.url ||
+        typeof response.data.is_phishing !== "boolean" ||
+        typeof response.data.safe_score !== "number"
+      )
+      {
+        throw new Error("Invalid API response format")
+      }
+        console.log("API Response :", response.data)
+        setResults([response.data, ...result]);
+        setUrl("");
     } catch (error) {
       console.error(
         "API Error:",
         error.response ? error.response.data : error.message
       );
       setError(
-        `Failed to check URL. ${error.message}. Status: ${
-          error.response ? error.response.status : "No response"
+        `Failed to check URL: ${error.message}${
+          error.response ? `. Status: ${error.response.status}` : ""
         }`
       );
     }
-    setLoading(false);
+    setIsLoading(false);
   };
 
   return (
@@ -52,6 +88,7 @@ const Home = () => {
         className=" w-full h-full bg-Alice-Blue flex flex-col items-center justify-center py-8 sm:py-12 md:py-16 lg:py-20"
       >
         <div className="flex flex-col items-center mb-6 sm:px-6 md:px-8 lg:px-0 px-4">
+
           <div className="pt-14 sm:px-6 md:px-8 lg:px-0">
             <h1 className="text-2xl sm:text-3xl md:text-4xl text-dark-purple font-bold text-center mb-4">
               Protect Yourself with {""}
@@ -60,10 +97,12 @@ const Home = () => {
               </span>
             </h1>
           </div>
+
           <p className="text-sm sm:text-base md:text-lg text-gray-600 text-center mb-6 font-primary">
             PhishVanguard helps you to identify malicious URLs and stay safe
             online with cutting-edge AI technologoy.
           </p>
+          
           <form
             onSubmit={handleCheckUrl}
             className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto mb-4 sm:mb-6 flex items-center justify-center "
@@ -88,11 +127,14 @@ const Home = () => {
             </p>
           )}
           <div className="flex flex-col items-center w-full max-w-md">
-            {result && (
+            {result.map( (result, index) =>  (
               <div className="bg-white shadow-md rounded-lg p-4 w-full max-w-md">
-                <h2 className="text-xl font-bold text-dark-purple mb-2">
-                  Result
-                </h2>
+                <ResultCard 
+                 key={index}
+                 url={result.url}
+                 is_phishing={result.is.is_phishing}
+                 safe_score={result.safe_score}
+                />
                 <p className="text-gray-700">
                   The URL <strong>{result.url}</strong> is{" "}
                   <span
@@ -105,7 +147,7 @@ const Home = () => {
                   .
                 </p>
               </div>
-            )}
+            ))}
           </div>
         </div>
         

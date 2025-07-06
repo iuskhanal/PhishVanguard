@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-@import "tailwindcss";
 @theme {
   --font-primary: "Roboto", "sans-serif";
   --font-secondary: "Open Sans", "sans-serif";
@@ -114,3 +113,5 @@ html {
 .text-shadow-zinc-800 {
   color: var(--text-color);
 }
+
+@custom-variant dark (&:where(.dark, .dark *))

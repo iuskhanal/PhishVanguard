@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <nav className="bg-white  text-russian-Violet fixed w-full  z-10 top-0 shadow-md font-primary">
-      <div className=" max-w-[1000px] mx-auto h-10 flex items-center justify-between px-4">
+      <div className=" max-w-[1000px] mx-auto h-10 flex items-center justify-between px-4 ml-10 sm:px-6 md:px-8 lg:px-10">
         <Link
           to="/"
           className=" flex items-center space-x-2 text-lg sm:text-xl font-bold transition duration-150"

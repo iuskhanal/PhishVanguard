@@ -13,7 +13,7 @@ import Download from './Components/Download/Download';
 const router = createBrowserRouter(
   createRoutesFromElements(
   <Route path="/" element={<Layout/>}>
-    <Route index element={ <Home />}  />
+    {/* <Route index element={ <Home />}  /> */}
     <Route path='about' element={<About/>} />
     <Route path="resource" element={<Resources/>} />
     <Route path="usecase" element={<UseCase/>} />

@@ -52,7 +52,7 @@ const Home = () => {
     try {
       const API_URL =
         import.meta.env.VITE_API_URL ||
-        "https://phishing-detector-api-production.up.railway.app/predict";
+        "https://backend-model-phishing-production.up.railway.app/predict" ;
       const response = await axios.post(
         API_URL,
         { url },
@@ -100,7 +100,6 @@ const Home = () => {
               Protect Yourself with {""}
               <span className="text-russian-Violet text-3xl font-primary-2 font-bold">
                 PhishVanguard
-                  {/* Name of the project */}
               </span>
             </h1>
           </div>

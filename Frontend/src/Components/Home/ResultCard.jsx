@@ -1,7 +1,7 @@
 const ResultCard = ({ url, is_phishing, safe_score }) => {
   return (
     <div
-      className={`relative bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg mb-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 dark:border-gray-700 ${
+      className={`relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg mb-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-200 dark:border-gray-700 ${
         is_phishing ? "border-l-4 border-red-500" : "border-l-4 border-green-500"
       }`}
       role="alert"
@@ -80,8 +80,8 @@ const ResultCard = ({ url, is_phishing, safe_score }) => {
         )}
       </div>
 
-      {/* Subtle Gradient Overlay for Elegance */}
-      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-gray-50 dark:to-gray-800 opacity-50 pointer-events-none"></div>
+      {/* Subtle Overlay for Depth */}
+      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-gray-100/30 dark:to-gray-800/30 opacity-40 pointer-events-none"></div>
     </div>
   );
 };

@@ -134,7 +134,7 @@ const Home = () => {
           )}
           <div className="flex flex-col items-center w-full max-w-md">
             {result.map((result, index) => (
-              <div className="bg-gray-500 shadow-md rounded-lg p-4 w-full max-w-md">
+              <div className="bg-Alice-Blue shadow-md rounded-lg p-4 w-full max-w-md">
                 <ResultCard
                   //done the prblem of is_phishing
                   key={ResultCard + index}

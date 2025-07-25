@@ -12,34 +12,7 @@ const Home = () => {
   const [result, setResults] = useState([]);
   const [error, setError] = useState(null);
 
-  // Trying to load result form localstorage.
-
-  useEffect(() => {
-    try {
-      const savedResults =
-        JSON.parse(localStorage.getItem("phishingResults")) || [];
-      // filtering out invalid entries...
-      setResults(
-        savedResults.filter(
-          (result) =>
-            result && result.url && typeof result.is_phishing === "boolean"
-        )
-      );
-    } catch (err) {
-      console.error("Faild to load results from localStorage : ", err);
-    }
-  }, []);
-
-  // Save results to localStorage on update
-
-  useEffect(() => {
-    try {
-      localStorage.setItem("phishingResults", JSON.stringify(result));
-    } catch (err) {
-      console.error("Failed to save results to localStorage: ", err);
-    }
-  }, [result]);
-
+  
   const handleCheckUrl = async (e) => {
     e.preventDefault();
     if (!url) {
@@ -52,7 +25,7 @@ const Home = () => {
     try {
       const API_URL =
         import.meta.env.VITE_API_URL ||
-        "https://backend-model-phishing-production.up.railway.app/predict" ;
+        "https://backend-model-phishing-production.up.railway.app/predict";
       const response = await axios.post(
         API_URL,
         { url },

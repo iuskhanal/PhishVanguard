@@ -1,4 +1,14 @@
 const ResultCard = ({ url, is_phishing, safe_score }) => {
+  // Function to handle the visit button click for phishing URLs
+  const handlePhishingVisit = () => {
+    const userConfirmed = window.confirm(
+      "⚠️ Warning: This URL is identified as a phishing site. Visiting it may risk your computer or system's security. Are you sure you want to proceed?"
+    );
+    if (userConfirmed) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
     <div
       className={`relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg mb-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-200 dark:border-gray-700 ${
@@ -49,9 +59,32 @@ const ResultCard = ({ url, is_phishing, safe_score }) => {
       {/* Warning or Action Button */}
       <div className="mt-4">
         {is_phishing ? (
-          <p className="text-red-600 dark:text-red-400 font-medium animate-pulse">
-            Warning: Avoid visiting this phishing URL!
-          </p>
+          <div>
+            <p className="text-red-600 dark:text-red-400 font-medium animate-pulse mb-2">
+              Warning: Avoid visiting this phishing URL!
+            </p>
+            <button
+              onClick={handlePhishingVisit}
+              className="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 transition-colors duration-200 font-medium"
+              aria-label={`Visit ${url} at your own risk`}
+            >
+              Visit at Your Own Risk
+              <svg
+                className="ml-2 w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                ></path>
+              </svg>
+            </button>
+          </div>
         ) : (
           <a
             href={url}

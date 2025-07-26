@@ -12,7 +12,7 @@ const Home = () => {
   const [result, setResults] = useState([]);
   const [error, setError] = useState(null);
 
-  
+   
   const handleCheckUrl = async (e) => {
     e.preventDefault();
     if (!url) {
@@ -25,7 +25,8 @@ const Home = () => {
     try {
       const API_URL =
         import.meta.env.VITE_API_URL ||
-        "https://backend-model-phishing-production.up.railway.app/predict";
+        "https://backend-model-phishing-production.up.railway.app/predict" || "http://localhost:5000/predict";
+
       const response = await axios.post(
         API_URL,
         { url },

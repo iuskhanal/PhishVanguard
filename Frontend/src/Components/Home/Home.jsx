@@ -101,7 +101,7 @@ const Home = () => {
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 placeholder="Enter URL or attach CSV"
-                className="w-150 p-2 sm:p-3 pr-12 rounded-sm rounded-br-none rounded-tr-none text-dark-purple border-2 focus:outline-none focus:border-cornflower-blue transition duration-300 bg-white"
+                className="w-full lg:w-100 p-2 sm:p-3 pr-12 rounded-sm rounded-br-none rounded-tr-none text-dark-purple border-2 focus:outline-none focus:border-cornflower-blue transition duration-300 bg-white"
               />
               <label
                 htmlFor="file-upload"

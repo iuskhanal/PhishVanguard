@@ -30,13 +30,21 @@ const Home = () => {
 
       const formData = new FormData();
       if (url) formData.append("url", url);
+
       if (file) formData.append("file", file);
 
+      fetch("http://localhost:5000/predict", {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.error(err));
       const response = await axios.post(API_URL, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        timeout: 10000,
+        timeout: 30000,
       });
 
       if (
